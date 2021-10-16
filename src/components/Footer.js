@@ -3,7 +3,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import {
     FooterWrapper,
     FooterSocialWrapper,
-    FooterSocialIcons
+    FooterSocialIcons,
+    P
 } from "../elements"
 
 export const Footer = () => {
@@ -37,7 +38,7 @@ export const Footer = () => {
                         <img src={data.twitter.publicURL} alt="Tiwtter logo" />
                     </a>
                 </FooterSocialIcons>
-                <p>© Copyright</p>
+                <P size="xSmall" color="dark3">© Copyright</P>
             </FooterSocialWrapper>
         </FooterWrapper>
     )
