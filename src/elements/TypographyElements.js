@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const P = styled.p`
-    margin: ${props => props.margin ? props.margin : 0};
+    margin: ${props => props.margin ? props.margin : "0 0 1rem 0"};
     font-size: ${props => {
         switch (props.size) {
             case "medium":
