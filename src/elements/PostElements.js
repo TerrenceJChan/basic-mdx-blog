@@ -105,6 +105,10 @@ export const PostWrapper = styled.main`
         padding: 0 0.3rem;
     }
 
+    pre {
+        margin-top: 2rem;
+    }
+
     hr {
         border: 0;
         height: 1px;
