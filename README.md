@@ -1,4 +1,5 @@
 # Basic MDX Blog
+
 This is a basic MDX blog without many bells and whistles. It was built using Gatsby, and by following Skillthrive's YouTube tutorial by Hunter.
 
 🔗 [Link to deployed site](sad-wing-eb7c3d.netlify.app)  
