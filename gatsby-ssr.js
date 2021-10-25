@@ -21,22 +21,22 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const components = {
-    table: Table,
-    pre: preProps => {
-        const props = preToCodeBlock(preProps)
-        if (props) {
-            return <Code {...props} />
-        }
-        return <pre {...preProps} />
-    },
-    wrapper: ({ children }) => <>{children}</>
+  table: Table,
+  pre: preProps => {
+    const props = preToCodeBlock(preProps)
+    if (props) {
+      return <Code {...props} />
+    }
+    return <pre {...preProps} />
+  },
+  wrapper: ({ children }) => <>{children}</>,
 }
 
 export const wrapRootElement = ({ element }) => (
-    <MDXProvider components={components}>
-        <ThemeProvider theme={Theme}>
-            <GlobalStyles />
-            {element}
-        </ThemeProvider>
-    </MDXProvider>
+  <MDXProvider components={components}>
+    <ThemeProvider theme={Theme}>
+      <GlobalStyles />
+      {element}
+    </ThemeProvider>
+  </MDXProvider>
 )

@@ -1,30 +1,31 @@
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { useStaticQuery, graphql } from "gatsby"
 import { FeatureImageWrapper } from "../elements"
 
 export const FeatureImage = ({ fixed }) => {
-
-    const data = useStaticQuery(graphql`
-        query {
-            imageSharp(fixed: {originalName: {eq: "energy-plains.jpg"}}) {
-                fixed (width: 1920) {
-                    ...GatsbyImageSharpFixed
-                }
-            }
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "energy-plains.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(layout: FIXED)
         }
-    `)
+      }
+    }
+  `)
 
-    return (
-        <FeatureImageWrapper>
-            <Img fixed={fixed ? fixed : data.imageSharp.fixed} style={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                width: "100%",
-                height: "100%",
-            }}
-            />
-        </FeatureImageWrapper>
-    )
+  return (
+    <FeatureImageWrapper>
+      <GatsbyImage
+        image={fixed ? fixed : data.file.childImageSharp.gatsbyImageData}
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          width: "100%",
+          height: "100%",
+        }}
+      />
+    </FeatureImageWrapper>
+  )
 }
