@@ -13,7 +13,9 @@ const singlePost = ({ data }) => {
         image={data.mdx.frontmatter.featureImage.publicURL}
       />
       <FeatureImage
-        fixed={data.mdx.frontmatter.featureImage.childImageSharp.fixed}
+        fixed={
+          data.mdx.frontmatter.featureImage.childImageSharp.gatsbyImageData
+        }
       />
       <Post>
         <H1 margin="0 0 2rem 0">{data.mdx.frontmatter.title}</H1>
@@ -37,14 +39,7 @@ export const pageQuery = graphql`
         featureImage {
           publicURL
           childImageSharp {
-            fixed {
-              base64
-              tracedSVG
-              aspectRatio
-              srcWebp
-              srcSetWebp
-              originalName
-            }
+            gatsbyImageData(placeholder: BLURRED, layout: FIXED)
           }
         }
       }
