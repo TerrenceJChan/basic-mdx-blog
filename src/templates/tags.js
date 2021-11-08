@@ -11,12 +11,12 @@ import {
 import { H1, P } from "../elements"
 
 const tags = ({ pageContext, data }) => {
-    const { tag, currentPage, numPages } = pageContext
+    const { tag, slug, currentPage, numPages } = pageContext
     const { totalCount } = data.allMdx
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
-    const prevPage = currentPage - 1 === 1 ? "/" : `/${currentPage - 1}`
-    const nextPage = `/${currentPage + 1}`
+    const prevPage = `/${slug}/${currentPage - 1}`
+    const nextPage = `/${slug}/${currentPage + 1}`
 
     const posts = data.allMdx.edges
 

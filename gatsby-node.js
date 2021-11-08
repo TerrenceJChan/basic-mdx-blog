@@ -63,7 +63,6 @@ exports.createPages = async function ({ actions, graphql }) {
   tags = _.uniq(tags)
   // Create tag posts pages
   tags.forEach(tag => {
-    console.log(typeof tagPostCounts[`${tag}`])
     Array.from({ length: Math.ceil(tagPostCounts[`${tag}`] / postPerPage) }).forEach((_, i) => {
       actions.createPage({
         path: `${slugify(tag)}/${i + 1}`,
@@ -72,6 +71,7 @@ exports.createPages = async function ({ actions, graphql }) {
           limit: postPerPage,
           skip: i * postPerPage,
           currentPage: i + 1,
+          slug: slugify(tag),
           numPages,
           tag,
         },
