@@ -17,7 +17,7 @@ exports.createPages = async function ({ actions, graphql }) {
       }
     }
   `)
-  
+
   // Create paginated pages for posts
   const postPerPage = 3
   const numPages = Math.ceil(data.allMdx.edges.length / postPerPage)
@@ -49,24 +49,26 @@ exports.createPages = async function ({ actions, graphql }) {
   let tags = []
   _.forEach(data.allMdx.edges, edge => {
     // tags = tags.concat(edge.node.frontmatter.tags)
-    if (_.get(edge, 'node.frontmatter.tags')) {
+    if (_.get(edge, "node.frontmatter.tags")) {
       tags = tags.concat(edge.node.frontmatter.tags)
     }
   })
 
   let tagPostCounts = {}
   tags.forEach(tag => {
-    tagPostCounts[tag] = (tagPostCounts[tag] || 0) + 1;
+    tagPostCounts[tag] = (tagPostCounts[tag] || 0) + 1
   })
 
   // Get all tags
   tags = _.uniq(tags)
   // Create tag posts pages
   tags.forEach(tag => {
-    Array.from({ length: Math.ceil(tagPostCounts[`${tag}`] / postPerPage) }).forEach((_, i) => {
+    Array.from({
+      length: Math.ceil(tagPostCounts[`${tag}`] / postPerPage),
+    }).forEach((_, i) => {
       actions.createPage({
         path: `${slugify(tag)}/${i + 1}`,
-        component: require.resolve('./src/templates/tags.js'),
+        component: require.resolve("./src/templates/tags.js"),
         context: {
           limit: postPerPage,
           skip: i * postPerPage,
